@@ -1,0 +1,39 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: {{name}}-{{environment}}
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: {{name}}-{{environment}}
+    spec:
+      containers:
+      - env:
+        - name: PORT
+          value: '3000'
+        image: appfigures/af-emails:latest
+        name: {{name}}-{{environment}}
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: 25m
+      imagePullSecrets:
+      - name: appfigures-deploy-docker
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{name}}-{{environment}}
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: {{name}}-{{environment}}
+type: NodePort
