@@ -38,3 +38,6 @@ spec:
     app: {{name}}-{{environment}}
 type: NodePort
 
+
+
+
