@@ -13,15 +13,13 @@ spec:
       - env:
         - name: PORT
           value: '3000'
-        image: appfigures/af-emails:latest
+        image: owenstranathan/test:latest
         name: {{name}}-{{environment}}
         ports:
         - containerPort: 3000
         resources:
           requests:
             cpu: 25m
-      imagePullSecrets:
-      - name: appfigures-deploy-docker
 
 ---
 
