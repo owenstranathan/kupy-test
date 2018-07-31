@@ -10,6 +10,8 @@ spec:
       labels:
         app: {{name}}-{{environment}}
     spec:
+      node-selector:
+        cloud.google.com/gke-nodepool: patrician-pool
       containers:
       - env:
         - name: PORT
