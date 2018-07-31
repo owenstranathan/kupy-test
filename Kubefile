@@ -14,7 +14,7 @@ spec:
       - env:
         - name: PORT
           value: '3000'
-        image: owenstranathan/test:latest
+        image: nginx:latest
         name: {{name}}-{{environment}}
         ports:
         - containerPort: 3000
